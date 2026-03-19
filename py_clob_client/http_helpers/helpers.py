@@ -16,7 +16,12 @@ POST = "POST"
 DELETE = "DELETE"
 PUT = "PUT"
 
-_http_client = httpx.Client(http2=True)
+import os as _os
+_proxy_url = _os.environ.get("DECODO_PROXY", "")
+_http_client = httpx.Client(
+    http2=False,
+    proxy=_proxy_url if _proxy_url else None
+)
 
 
 def overloadHeaders(method: str, headers: dict) -> dict:
