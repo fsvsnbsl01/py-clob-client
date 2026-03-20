@@ -22,7 +22,7 @@ _http_client = httpx.Client(
     http2=False,
     proxy=_proxy_url if _proxy_url else None
 )
-
+print(f"[PROXY DEBUG] Valor de DECODO_PROXY: '{_proxy_url}'")
 
 def overloadHeaders(method: str, headers: dict) -> dict:
     if headers is None:
